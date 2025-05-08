@@ -1,0 +1,9 @@
+path: D:/University/Nam3/2stSemester/XuLyAnh/22110309/vehicles_counting-master/model/dataset
+train: images/train
+val: images/val
+
+names:
+  0: car
+  1: motorbike
+  2: bus
+  3: truck

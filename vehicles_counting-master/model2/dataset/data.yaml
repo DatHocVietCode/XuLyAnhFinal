@@ -1,0 +1,13 @@
+path: D:/University/Nam3/2stSemester/XuLyAnh/22110309/vehicles_counting-master/model2/dataset
+train: train/images
+val: valid/images
+
+nc: 1
+names: ['Vehicle']
+
+roboflow:
+  workspace: farzad
+  project: vehicle_detection_yolov8
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/farzad/vehicle_detection_yolov8/dataset/3
