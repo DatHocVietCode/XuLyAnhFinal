@@ -31,12 +31,12 @@ uploaded_image = st.file_uploader("Kéo thả hoặc chọn một file ảnh (.j
 
 base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 print(base_path)
-model = YOLO(os.path.join(base_path, 'vehicles_counting-master/model/dataset/runs/detect/train2/weights/best.pt'))
+model = YOLO(os.path.join(base_path, 'vehicles_counting-master/model2/dataset/runs/detect/train/weights/best.pt'))
 # Lấy danh sách các lớp từ model đã train
 CLASSES = model.names
 print(CLASSES)
-VEHICLE_CLASSES = [k for k, v in CLASSES.items() if v in ["car", "motorbike", "bus", "truck"]]
-
+#VEHICLE_CLASSES = [k for k, v in CLASSES.items() if v in ["car", "motorbike", "bus", "truck"]]
+VEHICLE_CLASSES = [k for k, v in CLASSES.items() if v == "Vehicle"]
 # Thiết lập một số tham số
 CONFIDENCE_SETTING = 0.7
 MAX_DISTANCE = 120
