@@ -22,7 +22,8 @@ prediction_text = st.empty()
 # Tải mô hình đã huấn luyện bằng joblib
 model_path = 'NhanDienBanTay/hand_model.pkl'
 try:
-    model, scaler = joblib.load(model_path)
+    # Đọc mô hình và các đối tượng đã lưu
+    model, scaler, le = joblib.load(model_path)  # Giải nén 3 đối tượng
     st.success("Model loaded successfully!")
 except FileNotFoundError:
     st.error("Không tìm thấy model.pkl. Vui lòng kiểm tra lại đường dẫn!")
