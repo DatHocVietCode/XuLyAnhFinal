@@ -115,3 +115,5 @@ dmypy.json
 
 # Ignore all ZIP files
 *.zip
+# Ignore all csv files
+*.csv
