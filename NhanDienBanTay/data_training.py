@@ -17,10 +17,6 @@ if data.isnull().sum().any():
 X = data.drop('label', axis=1)
 y = data['label']
 
-# Chuyển đổi nhãn thành số (Label Encoding)
-le = LabelEncoder()
-y = le.fit_transform(y)  # Chuyển nhãn thành số
-
 # Chia dữ liệu thành tập train và test
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
@@ -42,5 +38,5 @@ print('Classification Report:')
 print(classification_report(y_test, y_pred))
 
 # Lưu mô hình đã huấn luyện
-joblib.dump((model, scaler, le), 'NhanDienBanTay/hand_model.pkl')  # Lưu thêm LabelEncoder để có thể decode nhãn sau này
+joblib.dump((model, scaler), 'NhanDienBanTay/hand_model.pkl')  # Lưu thêm LabelEncoder để có thể decode nhãn sau này
 print('Đã lưu mô hình vào hand_model.pkl')

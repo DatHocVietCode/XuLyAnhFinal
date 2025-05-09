@@ -25,24 +25,17 @@ with open(file_path, mode='a', newline='') as file:
         writer.writerow(header)
 
     while True:
-        # Nhập tên nhãn và số lượng tay
-        label_input = input("Nhập tên nhãn và số lượng tay (VD: '4 1' hoặc '9 2'), nhấn B để thoát: ")
-        if label_input.lower() == 'b':
+        print("im running")
+        # Nhập tên nhãn
+        label = input("Nhập tên nhãn (VD: '4'), nhấn B để thoát: ")
+        if label.lower() == 'b':
             print("Kết thúc phiên thu thập dữ liệu.")
             break
 
-        # Tách label và số lượng tay
-        try:
-            label, num_hands = label_input.split()
-            num_hands = int(num_hands)
-        except ValueError:
-            print("❌ Sai định dạng. Vui lòng nhập lại đúng format: <label> <số lượng tay>")
-            continue
-
-        print(f"Bắt đầu thu thập dữ liệu cho nhãn: {label} với số lượng tay: {num_hands} trong 5 giây...")
+        print(f"Bắt đầu thu thập dữ liệu cho nhãn: {label} trong 10 giây...")
 
         start_time = time.time()
-        with mp_hands.Hands(max_num_hands=2, min_detection_confidence=0.5, min_tracking_confidence=0.5) as hands:
+        with mp_hands.Hands(max_num_hands=1, min_detection_confidence=0.5, min_tracking_confidence=0.5) as hands:
             while cap.isOpened():
                 success, image = cap.read()
                 if not success:
@@ -55,24 +48,20 @@ with open(file_path, mode='a', newline='') as file:
 
                 # Vẽ bàn tay và thu thập tọa độ
                 if results.multi_hand_landmarks:
-                    if len(results.multi_hand_landmarks) != num_hands:
-                        print(f"❌ Phát hiện {len(results.multi_hand_landmarks)} tay, nhưng cần {num_hands}. Bỏ qua frame này.")
-                        continue
+                    hand_landmarks = results.multi_hand_landmarks[0]  # Chỉ lấy bàn tay đầu tiên
+                    mp_drawing.draw_landmarks(image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
-                    for hand_landmarks in results.multi_hand_landmarks:
-                        mp_drawing.draw_landmarks(image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+                    # Lấy tọa độ từng điểm
+                    landmarks = []
+                    for landmark in hand_landmarks.landmark:
+                        landmarks.extend([landmark.x, landmark.y, landmark.z])
 
-                        # Lấy tọa độ từng điểm
-                        landmarks = []
-                        for landmark in hand_landmarks.landmark:
-                            landmarks.extend([landmark.x, landmark.y, landmark.z])
-
-                        # ✅ Đảm bảo chỉ ghi nếu đủ 63 điểm (21 * 3)
-                        if len(landmarks) == 63:
-                            landmarks.append(label)
-                            writer.writerow(landmarks)
-                        else:
-                            print("Không đủ điểm landmark. Bỏ qua frame này.")
+                    # ✅ Đảm bảo chỉ ghi nếu đủ 63 điểm (21 * 3)
+                    if len(landmarks) == 63:
+                        landmarks.append(label)
+                        writer.writerow(landmarks)
+                    else:
+                        print("Không đủ điểm landmark. Bỏ qua frame này.")
 
                 # Hiển thị hình ảnh
                 cv2.imshow('Hand Data Collection', image)
@@ -90,3 +79,5 @@ with open(file_path, mode='a', newline='') as file:
 cap.release()
 cv2.destroyAllWindows()
 print("Đã lưu dữ liệu vào NhanDienBanTay/hand_data.csv")
+
+
