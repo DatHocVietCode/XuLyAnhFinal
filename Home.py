@@ -15,10 +15,12 @@ st.markdown(
     """
     <style>
     .stApp {
-        background-image: url("https://c4.wallpaperflare.com/wallpaper/586/603/742/minimalism-4k-for-mac-desktop-wallpaper-preview.jpg");
+        background-image: url("https://moewalls.com/wp-content/uploads/2021/11/bliss-tree-thumb-728x410.jpg");
         background-size: cover;
         background-position: center;
+        color: black;
     }
+    
     .title {
         color: white;
         font-size: 3em;
@@ -50,7 +52,42 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+st.markdown(
+    """
+    <style>
+    /* Làm cho sidebar trong suốt và chữ màu đen */
+    [data-testid="stSidebar"] {
+        background-color: transparent !important;  /* Nền trong suốt */
+        color: #000000 !important;  /* Màu chữ đen */
+    }
 
+    /* Đổi màu tiêu đề trong sidebar */
+    [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2 {
+        color: #000000 !important;  /* Màu chữ đen cho tiêu đề */
+    }
+
+    /* Đổi màu các item trong sidebar */
+    [data-testid="stSidebarNav"] ul li a {
+        color: #000000 !important;  /* Màu chữ đen cho các item */
+        font-size: 1.1em;  /* Tăng kích thước chữ cho dễ đọc */
+        padding: 10px;
+    }
+
+    /* Màu khi hover (di chuột vào) */
+    [data-testid="stSidebarNav"] ul li a:hover {
+        background-color: #D1D5DB;  /* Màu nền khi hover */
+        color: #000000;  /* Màu chữ đen khi hover */
+    }
+
+    /* Thêm hiệu ứng cho các item trong sidebar */
+    [data-testid="stSidebarNav"] ul li {
+        border-radius: 5px;  /* Bo góc cho các item */
+        transition: background-color 0.3s ease;  /* Hiệu ứng chuyển màu mượt mà */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 # =======================
 # 🌟 Hiển thị nội dung
 # =======================
@@ -62,29 +99,22 @@ st.markdown('<div class="subtitle">Xử lý ảnh số - DIPR430685_23_2_03</div
 # -----------------------
 st.markdown('<div class="section-title">📌 Sản phẩm</div>', unsafe_allow_html=True)
 st.markdown('<div class="info">Project cuối kỳ cho môn học xử lý ảnh số thuộc Trường Đại Học Sư Phạm Kỹ Thuật TP.HCM.</div>', unsafe_allow_html=True)
-
 st.markdown('''<ul class="info">
-    <li>📖 Chương 3: Xử lý ảnh</li>
-    <li>📖 Chương 4: Xử lý ảnh</li>
-    <li>📖 Chương 9: Xử lý ảnh</li>
-    <li>📖 Nhận dạng khuôn mặt</li>
-    <li>📖 Nhận dạng loại xe</li>
-    <li>📖 Nhận diện biển báo</li>
-</ul>''', unsafe_allow_html=True)
-
+        <li>📚 <strong>Chương 3:</strong> Xử lý ảnh</li>
+        <li>📚 <strong>Chương 4:</strong> Xử lý ảnh</li>
+        <li>📚 <strong>Chương 9:</strong> Xử lý ảnh</li>
+        <li>🤖 <strong>Nhận dạng khuôn mặt</strong></li>
+        <li>🚗 <strong>Nhận dạng loại xe</strong></li>
+        <li>🚦 <strong>Nhận diện biển báo</strong></li>
+        <li>✋ <strong>Nhận diện bàn tay</strong></li>
+        <li>♟️ <strong>Nhận diện cờ tướng</strong></li>
+        <li>🍎 <strong>Phát hiện trái cây</strong></li>
+    </ul>''', unsafe_allow_html=True)
 # -----------------------
 # 🔹 Thông tin sinh viên
 # -----------------------
 st.markdown('<div class="section-title">👨‍🎓 Thông tin sinh viên thực hiện</div>', unsafe_allow_html=True)
 st.markdown('''<ul class="info">
-    <li>📝 Họ tên: Võ Phan Tấn Đạt</li>
-    <li>📝 Họ tên: Võ Phan Tấn Đạt</li>
+    <li>📝 Họ tên: Võ Phan Tấn Đạt</li> 
     <li>🆔 MSSV: 22110309</li>
-</ul>''', unsafe_allow_html=True)
-
-st.markdown('<div class="section-title">🌐 Liên hệ</div>', unsafe_allow_html=True)
-st.markdown('''<ul class="info contact">
-    <li>🔗 <a href="https://github.com/DatHocVietCode" target="_blank">GitHub: DatHocVietCode</a></li>
-    <li>🔗 <a href="mailto:td13052004@gmail.com">Email: td13052004@gmail.com</a></li>
-    <li>🔗 <a href="https://www.facebook.com/vo.phan.tan.at/" target="_blank">Facebook: Võ Phan Tấn Đạt</a></li>
 </ul>''', unsafe_allow_html=True)
