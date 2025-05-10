@@ -15,14 +15,14 @@ st.markdown(
     """
     <style>
     .stApp {
-        background-image: url("https://moewalls.com/wp-content/uploads/2021/11/bliss-tree-thumb-728x410.jpg");
+        background-image: url("https://moewalls.com/wp-content/uploads/2024/11/cat-floating-on-the-water-thumb-728x410.jpg");
         background-size: cover;
         background-position: center;
-        color: black;
+        color: white;
     }
     
     .title {
-        color: white;
+        color: ;
         font-size: 3em;
         text-align: center;
         font-weight: bold;
@@ -76,7 +76,7 @@ st.markdown(
     /* Màu khi hover (di chuột vào) */
     [data-testid="stSidebarNav"] ul li a:hover {
         background-color: #D1D5DB;  /* Màu nền khi hover */
-        color: #000000;  /* Màu chữ đen khi hover */
+        color: black;  /* Màu chữ đen khi hover */
     }
 
     /* Thêm hiệu ứng cho các item trong sidebar */
@@ -92,7 +92,7 @@ st.markdown(
 # 🌟 Hiển thị nội dung
 # =======================
 st.markdown('<div class="title">Đồ án cuối kỳ</div>', unsafe_allow_html=True)
-st.markdown('<div class="subtitle">Xử lý ảnh số - DIPR430685_23_2_03</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle">Xử lý ảnh số</div>', unsafe_allow_html=True)
 
 # -----------------------
 # 🔹 Sản phẩm
